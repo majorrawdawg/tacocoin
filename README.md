@@ -1,10 +1,10 @@
-# Taco_Meme_Coin
+# Taco Meme Coin
 
-Taco_Meme_Coin is a pioneering project creating the first meme coin on GalaChain. It embodies a unique blend of community engagement, artist support, and fan activities, offering a playful and engaging crypto ecosystem. This project repurposes an existing site and codebase for a fresh direction, integrating 98.css for a nostalgic Win 98/95 theme, while aiming for a balance between retro and modern aesthetics.
+Taco Meme Coin is a pioneering project creating the first meme coin on GalaChain. It embodies a unique blend of community engagement, artist support, and fan activities, offering a playful and engaging crypto ecosystem. This project repurposes an existing site and codebase for a fresh direction, integrating 98.css for a nostalgic Win 98/95 theme, while aiming for a balance between retro and modern aesthetics.
 
 ## Overview
 
-The project leverages the latest in blockchain technology, specifically GalaChain, to foster a vibrant community around the $TACO token. It features a dynamic website themed after Windows 95/98, utilizing Next.js for routing and EJS for templating. The backend is powered by Node.js with Express, MongoDB for data persistence, and employs Web3.js for interacting with Ethereum-based smart contracts.
+The project leverages the latest in blockchain technology, specifically GalaChain, to foster a vibrant community around the $TACO token. It features a dynamic website themed after Windows 95/98, utilizing Next.js for routing and EJS for templating. The backend is powered by Node.js with Express, MongoDB for data persistence, and employs GalaChain SDK for interacting with chaincode.
 
 ## Features
 
@@ -21,7 +21,7 @@ The project leverages the latest in blockchain technology, specifically GalaChai
 
 - Node.js
 - MongoDB
-- Web3.js compatible Ethereum wallet
+- Hyperledger GalaChain SDK
 
 ### Quickstart
 
