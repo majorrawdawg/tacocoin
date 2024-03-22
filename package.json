@@ -1,0 +1,37 @@
+{
+  "name": "Taco_Meme_Coin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@truffle/contract": "^4.6.31",
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
+    "brew": "^0.0.8",
+    "chart.js": "^4.4.1",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^5.1.0",
+    "csv-writer": "^1.6.0",
+    "discord.js": "^14.14.1",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-session": "^1.18.0",
+    "interactjs": "^1.10.26",
+    "jq": "^1.7.2",
+    "moment": "^2.30.1",
+    "mongoose": "^8.1.1",
+    "mongoose-unique-validator": "^5.0.0",
+    "telegram-bot-api": "^2.0.1",
+    "twitter-api-v2": "^1.16.1",
+    "web3": "^4.6.0",
+    "ws": "^8.16.0"
+  }
+}

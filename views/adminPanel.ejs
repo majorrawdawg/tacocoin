@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel</title>
+</head>
+<body>
+    <h1>Admin Panel for Social Media Posts</h1>
+    <form action="/api/social/postToTwitter" method="POST">
+        <textarea name="content" placeholder="Write something to tweet..."></textarea>
+        <button type="submit">Post to Twitter</button>
+    </form>
+    <form action="/api/social/postToTelegram" method="POST">
+        <textarea name="content" placeholder="Write something for Telegram..."></textarea>
+        <button type="submit">Post to Telegram</button>
+    </form>
+</body>
+</html>

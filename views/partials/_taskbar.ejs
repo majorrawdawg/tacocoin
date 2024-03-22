@@ -1,0 +1,63 @@
+<div class="taskbar">
+  <div class="start-button">Start</div>
+  <div id="start-menu" class="start-menu" style="display:none;">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/dao">Taco DAO</a></li>
+      <li><a href="/artists">Gala Music Artist Support</a></li>
+      <li><a href="/waffle-wonders">Waffle Wonders Game Show</a></li>
+      <li><a href="/engagement-meter">Engagement Meter</a></li>
+    </ul>
+  </div>
+  <div class="taskbar-apps">
+    <!-- Dynamically added application windows will appear here -->
+  </div>
+  <!-- <div class="time-display" style="float: right;"></div> -->
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const startButton = document.querySelector('.start-button');
+    const startMenu = document.getElementById('start-menu');
+    
+    startButton.addEventListener('click', () => {
+      const isDisplayed = startMenu.style.display === 'block';
+      startMenu.style.display = isDisplayed ? 'none' : 'block';
+      console.log('Toggled Start Menu display');
+    });
+
+    window.addEventListener('click', (event) => {
+      if (!startMenu.contains(event.target) && !startButton.contains(event.target)) {
+        startMenu.style.display = 'none';
+        console.log('Closed Start Menu by clicking outside');
+      }
+    });
+
+    function applyTracerEffect() {
+      const tracerEffect = document.createElement('style');
+      tracerEffect.innerHTML = `
+        @keyframes tracerEffectAnimation {
+          0% { box-shadow: 0 0 15px #00ffff; }
+          50% { box-shadow: 0 0 30px #ff00ff; }
+          100% { box-shadow: 0 0 15px #00ffff; }
+        }
+        .start-menu {
+          animation: tracerEffectAnimation 2s linear infinite;
+        }
+      `;
+      document.head.appendChild(tracerEffect);
+      console.log('Applied tracer effect to the Start Menu');
+    }
+    
+    applyTracerEffect();
+
+    function updateTimeDisplay() {
+      const timeDisplay = document.querySelector('.time-display');
+      const now = new Date();
+      timeDisplay.textContent = now.toLocaleTimeString();
+      setTimeout(updateTimeDisplay, 1000);
+      console.log('Updated time display');
+    }
+    
+    updateTimeDisplay();
+  });
+</script>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/_head.ejs') %>
+<body>
+<%- include('partials/_header.ejs') %>
+<main role="main" class="container mt-4">
+  <h1>Artist Registration</h1>
+  <form action="/artist/register" method="POST">
+    <div class="mb-3">
+      <label for="artistName" class="form-label">Artist Name:</label>
+      <input type="text" class="form-control" id="artistName" name="artistName" required>
+    </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">Description:</label>
+      <textarea class="form-control" id="description" name="description" required></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="memeCoinName" class="form-label">Meme Coin Name:</label>
+      <input type="text" class="form-control" id="memeCoinName" name="memeCoinName" required>
+    </div>
+    <div class="mb-3">
+      <label for="memeCoinSymbol" class="form-label">Meme Coin Symbol:</label>
+      <input type="text" class="form-control" id="memeCoinSymbol" name="memeCoinSymbol" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Register</button>
+  </form>
+</main>
+<%- include('partials/_footer.ejs') %>
+</body>
+</html>

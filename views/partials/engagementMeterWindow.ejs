@@ -1,0 +1,36 @@
+<div class="window" id="engagementMeterWindow" style="display:none;">
+  <div class="window-titlebar">
+    <span>Engagement Meter</span>
+    <button onclick="document.getElementById('engagementMeterWindow').style.display='none'" style="float:right;">X</button>
+  </div>
+  <div class="window-content">
+    <p>Welcome to the Engagement Meter. This tool tracks your interactions and contributions to the community, rewarding you with $TACO tokens based on your activity.</p>
+    <div id="engagementMeterVisualization">
+      <!-- Placeholder for dynamic engagement meter visualization -->
+    </div>
+    <p>Your current spiciness level: <span id="spicinessLevel">Loading...</span></p>
+    <script>
+      const fetchSpicinessLevel = async () => {
+        try {
+          // Verify if the '/api/user/spiciness-level' endpoint exists and is correctly implemented in the backend before using it here.
+          const response = await fetch('/api/user/spiciness-level');
+          if (!response.ok) {
+            throw new Error('Failed to fetch spiciness level');
+          }
+          const data = await response.json();
+          document.getElementById('spicinessLevel').textContent = data.level;
+        } catch (error) {
+          console.error('Error fetching spiciness level:', error);
+          document.getElementById('spicinessLevel').textContent = 'Error loading spiciness level';
+        }
+      };
+
+      fetchSpicinessLevel();
+    </script>
+  </div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+    console.log('Engagement Meter window loaded');
+  });
+</script>

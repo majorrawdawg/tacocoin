@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/_head.ejs') %>
+<body>
+<%- include('partials/_header.ejs') %>
+<div class="main-content">
+  <div class="scanlines"></div>
+  <div class="desktop-icon" data-target="taco-dao-window">
+    <img src="/images/dao-icon.png" alt="Taco DAO">
+    <span>Taco DAO</span>
+  </div>
+  <div class="desktop-icon" data-target="artistSupportWindow">
+    <img src="/images/artist-support-icon.png" alt="Artist Support">
+    <span>Artist Support</span>
+  </div>
+  <div class="desktop-icon" data-target="waffle-wonders-game-show-window">
+    <img src="/images/game-show-icon.png" alt="Game Show">
+    <span>Game Show</span>
+  </div>
+  <div class="desktop-icon" data-target="engagementMeterWindow">
+    <img src="/images/engagement-meter-icon.png" alt="Engagement Meter">
+    <span>Engagement Meter</span>
+  </div>
+  <%- include('partials/daoWindow.ejs') %>
+  <%- include('partials/artistSupportWindow.ejs') %>
+  <%- include('partials/gameShowWindow.ejs') %>
+  <%- include('partials/engagementMeterWindow.ejs') %>
+</div>
+<%- include('partials/_taskbar.ejs') %>
+<%- include('partials/_footer.ejs') %>
+<script src="/js/main.js"></script>
+<script src="/js/taskbar.js"></script>
+<script src="/js/startMenu.js"></script>
+<script src="/js/engagementMeter.js"></script>
+</body>
+</html>

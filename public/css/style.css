@@ -1,0 +1,178 @@
+body {
+  background-color: #008080;
+  background-image: url('/images/retro-desktop-background.png');
+  font-family: 'Courier New', Courier, monospace;
+  color: #ffffff;
+  margin: 0;
+  padding-bottom: 30px; /* Space for taskbar */
+  min-height: 100vh; /* Full height */
+  box-sizing: border-box; /* Include padding in the element's total width and height */
+}
+
+.scanlines {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0,
+    rgba(0, 0, 0, 0.05) 1px,
+    rgba(0, 0, 0, 0) 2px
+  );
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.desktop-icon {
+  display: inline-block;
+  margin: 10px;
+  text-align: center;
+  cursor: pointer;
+  position: relative; /* Allow for icon dragging */
+}
+
+.desktop-icon img {
+  width: 64px;
+  height: 64px;
+}
+
+.window {
+  background-color: #c0c0c0;
+  border: 2px solid #000000;
+  padding: 10px;
+  position: absolute;
+  top: 50px;
+  left: 100px;
+  right: 100px;
+  bottom: 50px;
+  display: none;
+  z-index: 10; /* Ensure windows can be layered above others */
+}
+
+.window-titlebar {
+  background-color: #000080;
+  color: #ffffff;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.window-titlebar-controls {
+  display: flex;
+}
+
+.window-titlebar-controls button {
+  border: none;
+  background: transparent;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 0 5px;
+}
+
+.neon-effect {
+  animation: neon 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes neon {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #008080, 0 0 40px #008080, 0 0 50px #008080, 0 0 60px #008080, 0 0 70px #008080;
+  }
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+  }
+}
+
+.taskbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #000080;
+  color: #ffffff;
+  padding: 5px 10px;
+  font-family: 'MS Sans Serif', Geneva, sans-serif;
+  font-size: 12px;
+  border-top: 2px outset; /* Reintroduced border-top as per feedback */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1010; /* Ensure the taskbar is above all other content */
+}
+
+.quick-launch-icons {
+  display: flex;
+}
+
+.quick-launch-icon {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.start-button {
+  background-color: #c0c0c0;
+  color: #000000;
+  padding: 3px 6px;
+  cursor: pointer;
+  font-family: 'MS Sans Serif', Geneva, sans-serif;
+  font-size: 12px;
+  border: 2px outset #ffffff;
+}
+
+.start-button:active {
+  border: 2px inset #ffffff;
+}
+
+.start-menu {
+  display: none;
+  position: fixed;
+  bottom: 30px; /* Adjusted bottom position to ensure it pops up above the taskbar */
+  left: 0;
+  background-color: #c0c0c0;
+  border: 2px solid #000000;
+  padding: 10px;
+  z-index: 1002; /* Make sure it's above taskbar */
+  box-shadow: 0 0 15px #00ffff, 0 0 30px #ff00ff;
+  animation: neonBorder 2s ease-in-out infinite alternate, tracer 2s linear infinite;
+  width: 200px; /* Set a fixed width for the start menu */
+}
+
+.start-menu ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.start-menu ul li a {
+  color: #000000;
+  text-decoration: none;
+  display: block;
+  padding: 5px;
+  font-family: 'MS Sans Serif', Geneva, sans-serif;
+  font-size: 12px;
+}
+
+.start-menu ul li a:hover {
+  background-color: #008080;
+  color: #ffffff;
+}
+
+@keyframes tracer {
+  0% { box-shadow: 0 0 15px #00ffff; }
+  100% { box-shadow: 0 0 15px #ff00ff; }
+}
+
+@keyframes neonBorder {
+  from {
+    box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff, 0 0 40px #00ffff, 0 0 50px #00ffff, 0 0 60px #00ffff, 0 0 70px #00ffff;
+  }
+  to {
+    box-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff, 0 0 60px #ff00ff, 0 0 70px #ff00ff;
+  }
+}
+
+.time-display {
+  float: right;
+  font-family: 'MS Sans Serif', Geneva, sans-serif;
+  font-size: 12px;
+}

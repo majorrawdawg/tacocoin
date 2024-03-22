@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/_head.ejs') %>
+  <body>
+<%- include('partials/_header.ejs') %>
+    <main role="main" class="container mt-4">
+      <div class="text-center">
+        <h1>Taco DAO</h1>
+        <p>Here you can participate in the governance of Taco DAO by submitting proposals and voting.</p>
+
+        <section>
+          <h2>Create Proposal</h2>
+          <form id="createProposalForm">
+            <div class="mb-3">
+              <label for="description" class="form-label">Description:</label>
+              <textarea class="form-control" id="description" rows="3" required></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="recipient" class="form-label">Recipient Address:</label>
+              <input type="text" class="form-control" id="recipient" required>
+            </div>
+            <div class="mb-3">
+              <label for="value" class="form-label">Value (ETH):</label>
+              <input type="number" class="form-control" id="value" step="any" required>
+            </div>
+            <button type="button" class="btn btn-primary" id="createProposalBtn">Submit Proposal</button>
+          </form>
+        </section>
+        
+        <section id="proposalsList">
+          <h2>Proposals</h2>
+          <!-- Proposals will be listed here -->
+        </section>
+      </div>
+    </main>
+
+    <script src="/js/dao.js"></script> <!-- INPUT_REQUIRED {Ensure the dao.js file is properly linked and exists in the public/js directory} -->
+  </body>
+<%- include('partials/_footer.ejs') %>
+</html>
