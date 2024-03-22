@@ -1,0 +1,19 @@
+Script started on 2024-03-21 15:41:09-05:00 [TERM="xterm-256color" TTY="/dev/pts/5" COLUMNS="165" LINES="35"]
+
+> @gala-chain/TACOCOIN@1.1.9 network:start
+> galachain network:up -C=product-channel -t=curator -n=basic-product -d=./ --envConfig=./.dev-env --watch
+
+Network root directory: /home/majorrawdawg/TACOCOIN/test-network
+[1m============ 🤓 Generating basic configs 🤓 ==============[0m
+[3m==== 🔒 Generating crypto material for OrdererOrg 🔒 ====[0m
+Generating certs...
+[90m   CONFIG_PATH: /home/majorrawdawg/TACOCOIN/test-network/fablo-target/fabric-config [0m
+[90m   CRYPTO_CONFIG_FILE_NAME: crypto-config-ordererorg.yaml [0m
+[90m   ORG_PATH: peerOrganizations/orderer.local [0m
+[90m   OUTPUT_PATH: /home/majorrawdawg/TACOCOIN/test-network/fablo-target/fabric-config/crypto-config/ [0m
+[90m   FULL_CERT_PATH: /home/majorrawdawg/TACOCOIN/test-network/fablo-target/fabric-config/crypto-config/peerOrganizations/orderer.local [0m
+Can't generate certs, directory already exists : /home/majorrawdawg/TACOCOIN/test-network/fablo-target/fabric-config/crypto-config/peerOrganizations/orderer.local
+Try using 'reset' or 'down' to remove whole network or 'start' to reuse it
+    Error: Command failed: "/home/majorrawdawg/TACOCOIN/test-network/fablo" "up"
+
+Script done on 2024-03-21 15:41:09-05:00 [COMMAND_EXIT_CODE="1"]
