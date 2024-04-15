@@ -65,9 +65,9 @@ bower_components
 .nuxt
 dist
 
-# Gatsby files
-.cache/
-public
+# # Gatsby files
+# .cache/
+# public
 
 # Vue-cli build output
 dist/
