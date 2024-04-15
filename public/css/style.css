@@ -1,10 +1,13 @@
 body {
   background-color: #008080;
   background-image: url('/images/retro-desktop-background.png');
+  background-size: contain; /* This will ensure that the image is scaled to fit the content box */
+  background-repeat: no-repeat; /* The image will not repeat */
+  background-position: center center; /* This will center your image in the middle of the page */
   font-family: 'Courier New', Courier, monospace;
   color: #ffffff;
   margin: 0;
-  padding-bottom: 30px; /* Space for taskbar */
+  padding-bottom: 10px; /* Space for taskbar */
   min-height: 100vh; /* Full height */
   box-sizing: border-box; /* Include padding in the element's total width and height */
 }
@@ -18,11 +21,11 @@ body {
   background: repeating-linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0) 0,
-    rgba(0, 0, 0, 0.05) 1px,
-    rgba(0, 0, 0, 0) 2px
+    rgba(0, 0, 0, 0.1) 3px,
+    rgba(0, 0, 0, 0) 4px
   );
   pointer-events: none;
-  z-index: 1000;
+  z-index: 2000;
 }
 
 .desktop-icon {
@@ -84,14 +87,68 @@ body {
   }
 }
 
+@keyframes glitch {
+  0%, 100% {
+    clip: rect(0, 9999px, 0, 0);
+  }
+  10% {
+    clip: rect(0, 9999px, 0, 0);
+  }
+  20% {
+    clip: rect(0, 9999px, 0, 0);
+  }
+  30% {
+    clip: rect(0, 9999px, 0, 0);
+  }
+  40% {
+    clip: rect(0, 9999px, 0, 0);
+  }
+  50% {
+    clip: rect(0, 9999px, 0, 0);
+  }
+  60% {
+    clip: rect(0, 9999px, 0, 0);
+  }
+  70% {
+    clip: rect(0, 9999px, 0, 0);
+  }
+  80% {
+    clip: rect(0, 9999px, 0, 0);
+  }
+  90% {
+    clip: rect(0, 9999px, 0, 0);
+  }
+}
+
+.glitch:hover {
+  animation: glitch 500ms infinite;
+}
+
+@keyframes neon-glow {
+  from {
+    box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+  }
+  to {
+    box-shadow: 0 0 20px #ff00ff, 0 0 30px #ff00ff;
+  }
+}
+
+.icon-neon-effect:hover {
+  animation: neon-glow 1.5s ease-in-out infinite alternate;
+}
+
+
+
 .taskbar {
-  position: fixed;
+  position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: #000080;
+  background: linear-gradient(to bottom, #b4b4b4 0%, #5e5e5e 100%);
+  
   color: #ffffff;
   padding: 5px 10px;
+  margin-bottom: 28px;
   font-family: 'MS Sans Serif', Geneva, sans-serif;
   font-size: 12px;
   border-top: 2px outset; /* Reintroduced border-top as per feedback */
@@ -99,6 +156,31 @@ body {
   justify-content: space-between;
   align-items: center;
   z-index: 1010; /* Ensure the taskbar is above all other content */
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #000080; /* Slightly darker shade for differentiation */
+  color: #ffffff;
+  text-align: center;
+  padding: 0 0 0 0;
+  line-height: 18px;
+  height: 28px;
+  z-index: 1010; /* Lower than the taskbar to keep it underneath */
+}
+
+.taskbar, footer {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  border-top: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+
+button:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s;
 }
 
 .quick-launch-icons {
@@ -109,6 +191,27 @@ body {
   margin-right: 10px;
   cursor: pointer;
 }
+
+.quick-launch-icon:hover {
+  position: relative;
+  top: -2px;
+  transition: top 0.2s;
+}
+
+.quick-launch-icon:hover .icon-neon-effect {
+  animation: neon-glow 1.5s ease-in-out infinite alternate;
+}
+
+
+.active-icon {
+  animation: none; /* No animation by default */
+}
+
+.active-icon:hover {
+  animation: glitch 500ms infinite;
+}
+
+
 
 .start-button {
   background-color: #c0c0c0;

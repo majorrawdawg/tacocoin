@@ -1,111 +1,70 @@
 document.addEventListener("DOMContentLoaded", function() {
-  const startMenu = document.getElementById('start-menu');
-  const windows = document.querySelectorAll('.window');
-  const desktopIcons = document.querySelectorAll('.desktop-icon');
-  let draggedItem = null;
+  const mainContent = document.querySelector('.main-content');
+  const draggableElements = mainContent.querySelectorAll('.desktop-icon');
+  let draggedElement = null;
   let dragOffsetX = 0;
   let dragOffsetY = 0;
+  let isDragging = false;  // State to determine if dragging occurred
 
-  function toggleStartMenu() {
-    const isDisplayed = startMenu.style.display === 'block';
-    startMenu.style.display = isDisplayed ? 'none' : 'block';
-    if (!isDisplayed) {
-      startMenu.style.bottom = '40px'; // Adjust to ensure Start menu does not overlap the Start button
-    }
-  }
+  draggableElements.forEach(element => {
+    element.setAttribute('draggable', 'true');
 
-  function toggleWindow(windowId) {
-    const window = document.getElementById(windowId);
-    const isDisplayed = window.style.display === 'block';
-    windows.forEach(win => win.style.display = 'none'); // Close all windows before opening the new one
-    window.style.display = isDisplayed ? 'none' : 'block';
-    if (!isDisplayed) {
-      window.style.position = 'absolute';
-      window.style.top = '50px'; // Ensure windows open at a visible position on the screen
-    }
-  }
-
-  function setupDesktopIcons() {
-    desktopIcons.forEach(icon => {
-      icon.addEventListener('click', function() {
-        const targetWindow = this.getAttribute('data-target');
-        toggleWindow(targetWindow);
-      });
-      icon.setAttribute('draggable', 'true');
-      icon.addEventListener('dragstart', handleDragStart, false);
-      icon.addEventListener('dragend', function(e) {
-        // Log successful drag and drop of an icon
-        console.log(`Icon ${this.getAttribute('data-target')} moved`);
-        const newX = e.clientX - dragOffsetX;
-        const newY = e.clientY - dragOffsetY;
-        this.style.position = 'absolute';
-        this.style.left = newX + 'px';
-        this.style.top = newY + 'px';
-      });
+    element.addEventListener('mousedown', function(event) {
+      // Reset dragging state on mouse down
+      isDragging = false;
     });
-  }
 
-  function setupWindowControls() {
-    windows.forEach(window => {
-      window.setAttribute('draggable', 'true');
-      window.addEventListener('dragstart', handleDragStart, false);
-      
-      const closeButton = window.querySelector('.title-bar-controls button[aria-label="Close"]');
-      if(closeButton) {
-        closeButton.addEventListener('click', function() {
-          window.style.display = 'none';
-          // Log window closure action
-          console.log(`Window ${window.id} closed`);
-        });
+    element.addEventListener('dragstart', function(event) {
+      draggedElement = event.target.closest('.desktop-icon');
+      dragOffsetX = event.clientX - draggedElement.getBoundingClientRect().left;
+      dragOffsetY = event.clientY - draggedElement.getBoundingClientRect().top;
+      event.dataTransfer.effectAllowed = 'move';
+      isDragging = true;  // Set dragging state as true on drag start
+      console.log("Drag start: ", draggedElement);
+    });
+
+    element.addEventListener('click', function(event) {
+      if (!isDragging) {  // Check if there was significant mouse movement
+        const targetWindow = this.getAttribute('data-target');
+        console.log(`Opening window for: ${targetWindow}`);
+        toggleWindow(targetWindow);
       }
     });
-  }
 
-  function applyNeonEffect() {
-    const elements = document.querySelectorAll('.neon-effect');
-    elements.forEach(el => {
-      el.addEventListener('mouseenter', () => el.classList.add('breathing'));
-      el.addEventListener('mouseleave', () => el.classList.remove('breathing'));
+    element.addEventListener('dragend', function(event) {
+      // Apply position adjustments only if dragging occurred
+      if (isDragging) {
+        const newX = event.clientX - dragOffsetX;
+        const newY = event.clientY - dragOffsetY;
+        this.style.position = 'absolute';
+        this.style.left = `${newX}px`;
+        this.style.top = `${newY}px`;
+        console.log(`Icon moved to: ${newX}, ${newY}`);
+      }
+      isDragging = false;  // Reset dragging state after dropping
     });
+  });
+
+  function toggleWindow(targetId) {
+    const target = document.getElementById(targetId);
+    target.style.display = (target.style.display === 'none' || !target.style.display) ? 'block' : 'none';
   }
 
-  document.querySelector('.start-button').addEventListener('click', toggleStartMenu);
-  setupDesktopIcons();
-  setupWindowControls();
-  applyNeonEffect();
+  // Apply draggable setup to both icons and windows
+  setupDraggableItems([...icons, ...windows]);
 
-  function handleDragStart(e) {
-    draggedItem = e.target;
-    dragOffsetX = e.clientX - draggedItem.getBoundingClientRect().left;
-    dragOffsetY = e.clientY - draggedItem.getBoundingClientRect().top;
-    e.dataTransfer.effectAllowed = 'move';
-    // Log the beginning of a drag action
-    console.log(`Dragging of element ${draggedItem.id || 'unknown'} started`);
-  }
+  // Neon effect application
+  const neonElements = document.querySelectorAll('.neon-effect');
+  neonElements.forEach(element => {
+    element.addEventListener('mouseenter', () => element.classList.add('breathing'));
+    element.addEventListener('mouseleave', () => element.classList.remove('breathing'));
+  });
 
-  document.body.addEventListener('dragover', function(e) {
-    e.preventDefault(); // Necessary for the drop event to fire
-  }, false);
-
-  document.body.addEventListener('drop', function(e) {
-    e.preventDefault(); // Prevent default action (open as link for some elements)
-    if (draggedItem) {
-      const newX = e.clientX - dragOffsetX;
-      const newY = e.clientY - dragOffsetY;
-      draggedItem.style.position = 'absolute';
-      draggedItem.style.left = newX + 'px';
-      draggedItem.style.top = newY + 'px';
-      draggedItem = null;
-      // Log successful drop of an element
-      console.log("Element dropped successfully");
-    }
-    e.preventDefault();
-  }, false);
+  console.log("Drag and Drop functionalities integrated and loaded.");
 });
 
-// Neon breathing effect
+// Neon breathing effect styling
 const css = document.createElement('style');
-css.type = 'text/css';
 css.innerHTML = `
   @keyframes breathe {
     0% { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #008080, 0 0 40px #008080; }
@@ -116,6 +75,7 @@ css.innerHTML = `
     animation: breathe 3s ease-in-out infinite;
   }
 `;
-document.getElementsByTagName('head')[0].appendChild(css);
+document.head.appendChild(css);
+
 
 console.log("Main JS script loaded and executed successfully.");

@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Time display on the taskbar
   timeDisplay.className = 'time-display';
+  timeDisplay.style.float = 'right';
   taskbar.appendChild(timeDisplay);
 
   function updateTime() {
@@ -30,11 +31,7 @@ document.addEventListener("DOMContentLoaded", function() {
   setInterval(updateTime, 1000);
   updateTime(); // Initialize time immediately
 
-  // Adjust taskbar position and visibility
-  taskbar.style.position = 'fixed';
-  taskbar.style.bottom = '0';
-  taskbar.style.width = '100%';
-  taskbar.style.zIndex = '1000'; // Make sure taskbar is always on top
+  
 
   // Close Start Menu by clicking outside
   window.addEventListener('click', (event) => {
