@@ -6,14 +6,11 @@ body {
   padding: 0;
 }
 
-body {
-  background: url("../images/solitaire/bg.jpg") no-repeat center;
+.solitaire-game-area {
+  background: url("/images/solitaire/bg.jpg") no-repeat center;
   background-size: cover;
-}
-
-.solitaire {
   max-width: 800px;
-  height: 100%;
+  height: 400px;
   margin: auto;
   display: flex;
   flex: 1;
@@ -21,7 +18,9 @@ body {
   box-sizing: border-box;
   position: relative;
   overflow: hidden; /* important for win effect */
+}
 
+.solitaire {
   --card-width: 73px;
   --card-height: 98px;
   --hover-card: 0 0 4px 2px #fff;
@@ -31,7 +30,7 @@ body {
 .card {
   width: var(--card-width);
   height: var(--card-height);
-  background-image: url("./spritesheet.png");
+  background-image: url("/images/solitaire/spritesheet.png");
   position: absolute;
   left: 0;
   top: 0;
