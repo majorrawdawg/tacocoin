@@ -1,0 +1,23 @@
+<div class="window" id="solitaire-window" style="display: none; position: fixed; z-index: 10;">
+    <div class="title-bar">
+      <div class="title-bar-text">Solitaire</div>
+      <div class="title-bar-controls">
+        <button aria-label="Minimize" onclick="minimizeWindow('solitaire-window');"></button>
+        <button aria-label="Maximize" onclick="maximizeWindow('solitaire-window');"></button>
+        <button aria-label="Close" onclick="closeWindow('solitaire-window');"></button>
+      </div>
+    </div>
+    <div class="window-body">
+      <!-- Solitaire Game HTML Here -->
+      <div id="js-solitaire" class="solitaire">
+          <div id="js-upper" class="upper">
+              <div id="js-deck-pile" class="deck__pile upper__spacer"></div>
+              <div id="js-deck-deal" class="deck__deal upper__spacer"></div>
+              <div class="upper__spacer"></div>
+          </div>
+          <div id="js-board" class="board-deck"></div>
+      </div>
+      <script src="/js/solitaire.js"></script> <!-- Make sure the path matches your JS file's location -->
+    </div>
+  </div>
+  
