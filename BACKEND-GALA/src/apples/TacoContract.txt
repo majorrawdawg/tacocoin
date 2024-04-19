@@ -1,0 +1,32 @@
+//TacoContract
+
+import { Submit, GalaChainContext } from "@gala-chain/chaincode";
+
+// DTO for transferring $TACO coins
+class TransferCoinsDTO {
+    fromAccountId: string;
+    toAccountId: string;
+    amount: number;
+
+    constructor(fromAccountId: string, toAccountId: string, amount: number) {
+        this.fromAccountId = fromAccountId;
+        this.toAccountId = toAccountId;
+        this.amount = amount;
+    }
+}
+
+
+export class TacoCoinContract extends GalaContract {
+    @Submit({
+        in: TransferCoinsDTO
+    })
+    public async transferCoins(ctx: GalaChainContext, dto: TransferCoinsDTO): Promise<void> {
+        if (dto.amount <= 0) {
+            throw new Error("No bueno! You must HAVE TACOs to give TACOs ¯\_(ツ)_/¯");
+        }
+        // Additional validation to check account balances, etc.
+        // Code to execute the transfer
+        console.log(`Transferring ${dto.amount} TACO from ${dto.fromAccountId} to ${dto.toAccountId}`);
+        // I will put transfer logic implementation here
+    }
+}
