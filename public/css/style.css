@@ -68,7 +68,10 @@ body {
 
 .window-titlebar-controls button {
   border: none;
-  background: transparent;
+  /*background: transparent;*/
+  background: red;
+  height: 20px;
+  width: 20px;
   color: #ffffff;
   cursor: pointer;
   padding: 0 5px;
