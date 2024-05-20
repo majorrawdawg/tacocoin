@@ -22,11 +22,12 @@ document.addEventListener("DOMContentLoaded", function() {
   // Adjusts start menu's position to ensure it doesn't overlap the start button and it pops up above the taskbar correctly
   function adjustStartMenuPosition() {
     const taskbarHeight = taskbar.offsetHeight;
-    const startButtonRect = startButton.getBoundingClientRect();
-    startMenu.style.bottom = (taskbarHeight + 5) + 'px'; // Adjusted to take into account taskbar height
+    startMenu.style.bottom = `${taskbarHeight + startButton.offsetHeight}px`;
     startMenu.style.left = '0px'; // Ensures the start menu aligns with the start button on the left
     console.log('Adjusted Start Menu position based on taskbar height and aligned to the start button');
   }
+
+  adjustStartMenuPosition();
 
   // Implement neon glow and tracer effects for Start Menu
   function applyTracerEffect() {
@@ -45,7 +46,6 @@ document.addEventListener("DOMContentLoaded", function() {
     console.log('Applied tracer effect to the Start Menu');
   }
 
-  adjustStartMenuPosition();
   applyTracerEffect();
 
   console.log("startMenu.js script updated and executed successfully.");

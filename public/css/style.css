@@ -62,20 +62,32 @@ body {
   justify-content: space-between;
 }
 
-.window-titlebar-controls {
-  display: flex;
-}
-
 .window-titlebar-controls button {
   border: none;
-  /*background: transparent;*/
-  background: red;
+  background: #000080; /* Dark blue background */
   height: 20px;
   width: 20px;
   color: #ffffff;
   cursor: pointer;
-  padding: 0 5px;
+  padding: 0;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 16px;
+  text-align: center;
+  line-height: 20px; /* Center text vertically */
 }
+
+.window-titlebar-controls button[aria-label="Close"]::before {
+  content: '✖'; /* Close symbol */
+}
+
+.window-titlebar-controls button[aria-label="Minimize"]::before {
+  content: '−'; /* Minimize symbol */
+}
+
+.window-titlebar-controls button[aria-label="Maximize"]::before {
+  content: '□'; /* Maximize symbol */
+}
+
 
 .neon-effect {
   animation: neon 1.5s ease-in-out infinite alternate;
@@ -233,7 +245,7 @@ button:hover {
 .start-menu {
   display: none;
   position: fixed;
-  bottom: 30px; /* Adjusted bottom position to ensure it pops up above the taskbar */
+  bottom: 60px; /* Adjusted bottom position to ensure it pops up above the taskbar */
   left: 0;
   background-color: #c0c0c0;
   border: 2px solid #000000;
