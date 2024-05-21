@@ -1,7 +1,7 @@
 <%# Waffle Wonders Game Show Window EJS Partial %>
-<div class="window" id="waffle-wonders-game-show-window" style="display: none; position: fixed; z-index: 10;">
+<div class="window-gameshow" id="waffle-wonders-game-show-window" style="display: none; position: fixed; z-index: 10;">
   <div class="title-bar">
-    <div class="title-bar-text">Waffle Wonders Game Show</div>
+    <div class="neon-header">Waffle Wonders Game Show</div>
     <div class="title-bar-controls">
       <button aria-label="Minimize" onclick="minimizeWindow('waffle-wonders-game-show-window');"></button>
       <button aria-label="Maximize" onclick="maximizeWindow('waffle-wonders-game-show-window');"></button>
@@ -9,9 +9,11 @@
     </div>
   </div>
   <div class="window-body">
-    <p class="neon-effect">Dive into the Waffle Wonders Game Show!</p>
-    <p>Participate in our latest challenges and quizzes, and win exciting prizes in $TACO.</p>
-    <p>Stay tuned for upcoming events and make sure to join the fun.</p>
+    <p class="subheader">Dive into the Waffle Wonders Game Show!</p>
+    <div class="semi-transparent-bg">
+      <p class="standard-text">Participate in our latest challenges and quizzes, and win exciting prizes in $TACO.</p>
+      <p class="standard-text">Stay tuned for upcoming events and make sure to join the fun.</p>
+    </div>
   </div>
 </div>
 <script>

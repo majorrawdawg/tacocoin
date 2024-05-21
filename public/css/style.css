@@ -54,6 +54,19 @@ body {
   z-index: 10; /* Ensure windows can be layered above others */
 }
 
+.window-gameshow {
+  background-color: #333333;
+  border: 2px solid #000000;
+  padding: 10px;
+  position: absolute;
+  top: 50px;
+  left: 100px;
+  right: 100px;
+  bottom: 50px;
+  display: none;
+  z-index: 10; /* Ensure windows can be layered above others */
+}
+
 .window-titlebar {
   background-color: #000080;
   color: #ffffff;
@@ -293,4 +306,99 @@ button:hover {
   float: right;
   font-family: 'MS Sans Serif', Geneva, sans-serif;
   font-size: 12px;
+}
+
+
+/* .neon-text {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 24px;
+  color: #ffffff;
+  -webkit-text-stroke: 1px #000000;
+  text-shadow: 
+    0 0 5px #fff, 
+    0 0 10px #ff00ff, 
+    0 0 15px #ff00ff, 
+    0 0 20px #ff00ff, 
+    0 0 25px #ff00ff, 
+    0 0 30px #ff00ff, 
+    -1px -1px 0 #000000, 
+    1px -1px 0 #000000, 
+    -1px 1px 0 #000000, 
+    1px 1px 0 #000000;
+  animation: neonGlow 1.5s ease-in-out infinite alternate;
+} */
+
+/* Neon Effect for Main Headers */
+.neon-header {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 36px;
+  color: #ffffff;
+  -webkit-text-stroke: 1px #000000; /* Thin outline for WebKit browsers */
+  text-shadow: 
+    0 0 5px #fff, 
+    0 0 10px #ff00ff, 
+    0 0 15px #ff00ff, 
+    0 0 20px #ff00ff, 
+    0 0 25px #ff00ff, 
+    0 0 30px #ff00ff, 
+    -1px -1px 0 #000000, 
+    1px -1px 0 #000000, 
+    -1px 1px 0 #000000, 
+    1px 1px 0 #000000; /* Fallback outline for non-WebKit browsers */
+  animation: neonGlow 1.5s ease-in-out infinite alternate;
+}
+
+/* Subheaders with a Slight Glow */
+.subheader {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 28px;
+  color: #ffffff;
+  text-shadow: 0 0 5px #202020, 0 0 10px #202020, -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000;
+}
+
+/* Standard Text with High Readability */
+.standard-text {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 18px;
+  color: #ffffff;
+  text-shadow: -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000;
+}
+
+@keyframes neonGlow {
+  from {
+    text-shadow: 
+      0 0 10px #fff, 
+      0 0 20px #ff00ff, 
+      0 0 30px #ff00ff, 
+      0 0 40px #ff00ff,
+      -1px -1px 0 #000000, 
+      1px -1px 0 #000000, 
+      -1px 1px 0 #000000, 
+      1px 1px 0 #000000; /* Outline for neon glow */
+  }
+  to {
+    text-shadow: 
+      0 0 20px #00ffff, 
+      0 0 30px #00ffff, 
+      0 0 40px #00ffff, 
+      0 0 50px #00ffff,
+      -1px -1px 0 #000000, 
+      1px -1px 0 #000000, 
+      -1px 1px 0 #000000, 
+      1px 1px 0 #000000; /* Outline for neon glow */
+  }
+}
+
+/* Semi-transparent background for standard text areas */
+.semi-transparent-bg {
+  background-color: rgba(175, 175, 175, 0.5); /* Black background with 50% opacity */
+  padding: 15px;
+  border-radius: 15px; /* Optional: adds rounded corners */
+  margin: 12px 25px; /* Optional: adds margin around the text areas */
+  box-shadow: 
+    0 0 5px rgba(255, 255, 255, 0.2), /* Soft white outer glow */
+    0 0 10px rgba(0, 255, 255, 0.5), /* Cyan inner glow */
+    0 0 15px rgba(0, 255, 255, 0.7), /* More intense cyan inner glow */
+    0 0 20px rgba(255, 0, 255, 0.5), /* Magenta inner glow */
+    0 0 25px rgba(255, 0, 255, 0.7); /* More intense magenta inner glow */
 }
