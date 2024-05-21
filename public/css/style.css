@@ -89,16 +89,20 @@ body {
   line-height: 20px; /* Center text vertically */
 }
 
-.window-titlebar-controls button[aria-label="Close"]::before {
-  content: '✖'; /* Close symbol */
+.window-titlebar-controls button i {
+  font-size: 14px; /* Adjust icon size */
 }
 
 .window-titlebar-controls button[aria-label="Minimize"]::before {
-  content: '−'; /* Minimize symbol */
+  content: none; /* Remove previous content */
 }
 
 .window-titlebar-controls button[aria-label="Maximize"]::before {
-  content: '□'; /* Maximize symbol */
+  content: none; /* Remove previous content */
+}
+
+.window-titlebar-controls button[aria-label="Close"]::before {
+  content: none; /* Remove previous content */
 }
 
 
@@ -186,6 +190,47 @@ body {
   z-index: 1010; /* Ensure the taskbar is above all other content */
 }
 
+.taskbar-app {
+  background: #c0c0c0;
+  border: 1px solid #000000;
+  padding: 3px 6px;
+  margin: 0 2px;
+  color: #000000;
+  cursor: pointer;
+  font-family: 'MS Sans Serif', Geneva, sans-serif;
+  font-size: 12px;
+  text-align: center;
+  transition: background 0.3s;
+}
+
+.taskbar-app:hover {
+  /* background: #008080; */
+  background: #404747;
+  color: #ffffff;
+}
+
+.taskbar-app:active {
+  border: 1px inset #ffffff;
+}
+
+.window-titlebar-controls button {
+  border: none;
+  background: #000080; /* Dark blue background */
+  height: 20px;
+  width: 20px;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 0;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 16px;
+  text-align: center;
+  line-height: 20px; /* Center text vertically */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
 footer {
   position: fixed;
   bottom: 0;
@@ -249,6 +294,12 @@ button:hover {
   font-family: 'MS Sans Serif', Geneva, sans-serif;
   font-size: 12px;
   border: 2px outset #ffffff;
+}
+
+.start-button:hover {
+  /* background: #008080; */
+  background: #404747;
+  color: #ffffff;
 }
 
 .start-button:active {
@@ -332,6 +383,7 @@ button:hover {
 .neon-header {
   font-family: 'Courier New', Courier, monospace;
   font-size: 36px;
+  font-weight: 700;
   color: #ffffff;
   -webkit-text-stroke: 1px #000000; /* Thin outline for WebKit browsers */
   text-shadow: 

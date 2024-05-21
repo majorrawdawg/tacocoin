@@ -3,9 +3,9 @@
   <div class="title-bar">
     <div class="neon-header">Waffle Wonders Game Show</div>
     <div class="title-bar-controls">
-      <button aria-label="Minimize" onclick="minimizeWindow('waffle-wonders-game-show-window');"></button>
-      <button aria-label="Maximize" onclick="maximizeWindow('waffle-wonders-game-show-window');"></button>
-      <button aria-label="Close" onclick="closeWindow('waffle-wonders-game-show-window');"></button>
+      <button aria-label="Minimize" onclick="minimizeWindow('waffle-wonders-game-show-window');"><i class="fas fa-minus"></i></button>
+      <button aria-label="Maximize" onclick="maximizeWindow('waffle-wonders-game-show-window');"><i class="fas fa-expand"></i></button>
+      <button aria-label="Close" onclick="closeWindow('waffle-wonders-game-show-window');"><i class="fas fa-times"></i></button>
     </div>
   </div>
   <div class="window-body">
@@ -16,53 +16,4 @@
     </div>
   </div>
 </div>
-<script>
-  let originalWindowState = {};
-
-  function closeWindow(windowId) {
-    document.getElementById(windowId).style.display = 'none';
-    originalWindowState[windowId] = {}; // Clear memory of the window state when closed
-  }
-
-  function minimizeWindow(windowId) {
-    const windowElement = document.getElementById(windowId);
-    if (!originalWindowState[windowId]) {
-      originalWindowState[windowId] = {
-        height: windowElement.style.height,
-        display: windowElement.querySelector('.window-body').style.display
-      };
-    }
-    windowElement.style.height = '30px';
-    windowElement.querySelector('.window-body').style.display = 'none';
-  }
-
-  function maximizeWindow(windowId) {
-    const windowElement = document.getElementById(windowId);
-    if (!windowElement.classList.contains('maximized')) {
-      if (!originalWindowState[windowId]) {
-        originalWindowState[windowId] = {
-          width: windowElement.style.width,
-          height: windowElement.style.height,
-          top: windowElement.style.top,
-          left: windowElement.style.left,
-          transform: windowElement.style.transform,
-          display: windowElement.querySelector('.window-body').style.display
-        };
-      }
-      windowElement.style.width = '100vw';
-      windowElement.style.height = '100vh';
-      windowElement.style.top = '0';
-      windowElement.style.left = '0';
-      windowElement.style.transform = 'none';
-      windowElement.classList.add('maximized');
-    } else {
-      windowElement.style.width = originalWindowState[windowId].width;
-      windowElement.style.height = originalWindowState[windowId].height;
-      windowElement.style.top = originalWindowState[windowId].top;
-      windowElement.style.left = originalWindowState[windowId].left;
-      windowElement.style.transform = originalWindowState[windowId].transform;
-      windowElement.querySelector('.window-body').style.display = originalWindowState[windowId].display;
-      windowElement.classList.remove('maximized');
-    }
-  }
-</script>
+<script src="/js/windowManagement.js" defer></script>
