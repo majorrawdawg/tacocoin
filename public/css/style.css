@@ -67,6 +67,127 @@ body {
   z-index: 10; /* Ensure windows can be layered above others */
 }
 
+.window-gameshow .title-bar {
+  background-color: #333333;
+  /* background-color: #000080;  */
+  color: #ffffff;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Ensures the controls align in the center vertically */
+  position: relative; /* Allows for absolute positioning of the controls */
+}
+
+.window-gameshow .title-bar-controls {
+  display: flex;
+  gap: 5px; /* Space between buttons */
+  position: absolute; /* Position the controls absolutely within the title bar */
+  right: 5px; /* Position them 5px from the right edge */
+  top: 50%;
+  transform: translateY(-50%); /* Center vertically */
+}
+
+.window-gameshow .title-bar-controls button {
+  border: none;
+  /* background: #000080;  Dark blue background */
+  height: 20px;
+  width: 20px;
+  color: #000000;
+  cursor: pointer;
+  padding: 0;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 16px;
+  text-align: center;
+  line-height: 20px; /* Center text vertically */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.window-gameshow .title-bar-controls button i {
+  font-size: 16px; /* Adjust icon size */
+}
+
+.window-gameshow .title-bar-controls button[aria-label="Minimize"]::before {
+  content: none; /* Remove previous content */
+}
+
+.window-gameshow .title-bar-controls button[aria-label="Maximize"]::before {
+  content: none; /* Remove previous content */
+}
+
+.window-gameshow .title-bar-controls button[aria-label="Close"]::before {
+  content: none; /* Remove previous content */
+}
+
+.window-whitepaper {
+  background-color: #333333;
+  border: 2px solid #000000;
+  padding: 10px;
+  position: absolute;
+  top: 50px;
+  left: 100px;
+  right: 100px;
+  bottom: 50px;
+  display: none;
+  z-index: 10; /* Ensure windows can be layered above others */
+}
+
+.window-whitepaper .title-bar {
+  background-color: #323639;
+  /* background-color: #000080;  */
+  color: #ffffff;
+  padding: 5px;
+  display: flex;
+  background: #000080;  /* Dark blue background */
+  justify-content: space-between;
+  align-items: center; /* Ensures the controls align in the center vertically */
+  position: relative; /* Allows for absolute positioning of the controls */
+}
+
+.window-whitepaper .title-bar-controls {
+  display: flex;
+  gap: 5px; /* Space between buttons */
+  background: #000080;  /* Dark blue background */
+  position: absolute; /* Position the controls absolutely within the title bar */
+  right: 5px; /* Position them 5px from the right edge */
+  top: 50%;
+  transform: translateY(-50%); /* Center vertically */
+}
+
+.window-whitepaper .title-bar-controls button {
+  border: none;
+  /* background: #000080;  Dark blue background */
+  height: 20px;
+  width: 20px;
+  color: #000000;
+  cursor: pointer;
+  padding: 0;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 16px;
+  text-align: center;
+  line-height: 20px; /* Center text vertically */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.window-whitepaper .title-bar-controls button i {
+  font-size: 16px; /* Adjust icon size */
+}
+
+.window-whitepaper .title-bar-controls button[aria-label="Minimize"]::before {
+  content: none; /* Remove previous content */
+}
+
+.window-whitepaper .title-bar-controls button[aria-label="Maximize"]::before {
+  content: none; /* Remove previous content */
+}
+
+.window-whitepaper .title-bar-controls button[aria-label="Close"]::before {
+  content: none; /* Remove previous content */
+}
+
 .window-titlebar {
   background-color: #000080;
   color: #ffffff;
@@ -75,9 +196,10 @@ body {
   justify-content: space-between;
 }
 
+/* 
 .window-titlebar-controls button {
   border: none;
-  background: #000080; /* Dark blue background */
+  background: #000080;
   height: 20px;
   width: 20px;
   color: #ffffff;
@@ -86,7 +208,26 @@ body {
   font-family: 'Courier New', Courier, monospace;
   font-size: 16px;
   text-align: center;
-  line-height: 20px; /* Center text vertically */
+  line-height: 20px; /* Center text vertically
+}
+
+*/
+
+.window-titlebar-controls button {
+  border: none;
+  background: #000080;
+  height: 20px;
+  width: 20px;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 0;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 16px;
+  text-align: center;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .window-titlebar-controls button i {
@@ -212,24 +353,6 @@ body {
 .taskbar-app:active {
   border: 1px inset #ffffff;
 }
-
-.window-titlebar-controls button {
-  border: none;
-  background: #000080; /* Dark blue background */
-  height: 20px;
-  width: 20px;
-  color: #ffffff;
-  cursor: pointer;
-  padding: 0;
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 16px;
-  text-align: center;
-  line-height: 20px; /* Center text vertically */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 
 footer {
   position: fixed;
