@@ -71,4 +71,6 @@ document.addEventListener("DOMContentLoaded", function() {
   window.closeWindow = closeWindow;
   window.minimizeWindow = minimizeWindow;
   window.maximizeWindow = maximizeWindow;
+
+  
 });
