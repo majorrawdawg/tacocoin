@@ -2,53 +2,54 @@
 <html lang="en">
 <%- include('partials/_head.ejs') %>
 <body>
-<%- include('partials/_header.ejs') %>
-<script src="https://cdn.jsdelivr.net/npm/@interactjs/interactjs/dist/interact.min.js"></script>
-<div class="main-content">
-  <div class="scanlines"></div>
-  <div class="desktop-icon" data-target="taco-dao-window">
-    <img src="/images/dao-icon.png" alt="Taco DAO">
-    <span>Taco DAO</span>
+  <!-- <%- include('partials/_header.ejs') %> -->
+  <script src="https://cdn.jsdelivr.net/npm/@interactjs/interactjs/dist/interact.min.js"></script>
+  <div class="main-content">
+    <div class="scanlines"></div>
+    <div class="desktop-icon" data-target="taco-dao-window">
+      <img src="/images/dao-icon.png" alt="Taco DAO">
+      <span>Taco DAO</span>
+    </div>
+    <div class="desktop-icon" data-target="artistSupportWindow">
+      <img src="/images/artist-support-icon.png" alt="Artist Support">
+      <span>Artist Support</span>
+    </div>
+    <div class="desktop-icon" data-target="waffle-wonders-game-show-window">
+      <img src="/images/game-show-icon.png" alt="Game Show">
+      <span>Game Show</span>
+    </div>
+    <div class="desktop-icon" data-target="engagementMeterWindow">
+      <img src="/images/engagement-meter-icon.png" alt="Engagement Meter">
+      <span>Engagement Meter</span>
+    </div>
+    <div class="desktop-icon" data-target="solitaire-window">
+      <img src="/images/game_solitaire-0.png" alt="Solitaire">
+      <span>Solitaire</span>
+    </div>
+    <div class="desktop-icon" data-target="shell-breaker-window">
+      <img src="/images/shell_breaker_icon_64x64.png" alt="Shell Breaker">
+      <span>Shell Breaker</span>
+    </div>
+    <div class="desktop-icon" data-target="white-paper-window">
+      <img src="/images/white_paper_icon_64x64.png" alt="TACO Whitepaper">
+      <span>TACO Whitepaper</span>
+    </div>
+    <%- include('partials/daoWindow.ejs') %>
+    <%- include('partials/artistSupportWindow.ejs') %>
+    <%- include('partials/gameShowWindow.ejs') %>
+    <%- include('partials/engagementMeterWindow.ejs') %>
+    <%- include('partials/solitaireWindow.ejs') %>
+    <%- include('partials/shellBreakerWindow.ejs') %>
+    <%- include('partials/whitePaperWindow.ejs') %>
   </div>
-  <div class="desktop-icon" data-target="artistSupportWindow">
-    <img src="/images/artist-support-icon.png" alt="Artist Support">
-    <span>Artist Support</span>
-  </div>
-  <div class="desktop-icon" data-target="waffle-wonders-game-show-window">
-    <img src="/images/game-show-icon.png" alt="Game Show">
-    <span>Game Show</span>
-  </div>
-  <div class="desktop-icon" data-target="engagementMeterWindow">
-    <img src="/images/engagement-meter-icon.png" alt="Engagement Meter">
-    <span>Engagement Meter</span>
-  </div>
-  <div class="desktop-icon" data-target="solitaire-window">
-    <img src="/images/game_solitaire-0.png" alt="Solitaire">
-    <span>Solitaire</span>
-  </div>
-  <div class="desktop-icon" data-target="shell-breaker-window">
-    <img src="/images/shell_breaker_icon_64x64.png" alt="Shell Breaker">
-    <span>Shell Breaker</span>
-  </div>
-  <div class="desktop-icon" data-target="white-paper-window">
-    <img src="/images/white_paper_icon_64x64.png" alt="TACO Whitepaper">
-    <span>TACO Whitepaper</span>
-  </div>
-  <%- include('partials/daoWindow.ejs') %>
-  <%- include('partials/artistSupportWindow.ejs') %>
-  <%- include('partials/gameShowWindow.ejs') %>
-  <%- include('partials/engagementMeterWindow.ejs') %>
-  <%- include('partials/solitaireWindow.ejs') %>
-  <%- include('partials/shellBreakerWindow.ejs') %>
-  <%- include('partials/whitePaperWindow.ejs') %>
-</div>
-<%- include('partials/_taskbar.ejs') %>
-<%- include('partials/_footer.ejs') %>
-<script src="/js/main.js"></script>
-<script src="/js/taskbar.js"></script>
-<script src="/js/startMenu.js"></script>
-<script src="/js/engagementMeter.js"></script>
-<script src="/js/solitaire.js"></script>
-<script src="/js/shellBreaker.js"></script>
+  <%- include('partials/_taskbar.ejs') %>
+  <%- include('partials/_footer.ejs') %>
+  <script src="/js/main.js"></script>
+  <script src="/js/taskbar.js"></script>
+  <script src="/js/startMenu.js"></script>
+  <script src="/js/engagementMeter.js"></script>
+  <script src="/js/solitaire.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.min.js"></script>
+  <script src="/js/shellBreaker.js"></script>
 </body>
 </html>

@@ -188,6 +188,78 @@ body {
   content: none; /* Remove previous content */
 }
 
+.window-shellbreaker {
+  background-color: #333333;
+  border: 2px outset #c0c0c0;
+  padding: 0px 0px 0px 0px;
+  position: absolute;
+  top: 75px;
+  left: 120px;
+  right: 120px;
+  bottom: 120px;
+  display: flex;
+  flex-direction: column;
+  display: none;
+  overflow: hidden;
+  z-index: 10; /* Ensure windows can be layered above others */
+}
+
+.window-shellbreaker .title-bar {
+  background-color: #323639;
+  /* background-color: #000080;  */
+  color: #ffffff;
+  padding: 5px;
+  display: flex;
+  border: 2px outset #c0c0c0;
+  background: #000080;  /* Dark blue background */
+  justify-content: space-between;
+  align-items: center; /* Ensures the controls align in the center vertically */
+  position: relative; /* Allows for absolute positioning of the controls */
+}
+
+.window-shellbreaker .title-bar-controls {
+  display: flex;
+  gap: 5px; /* Space between buttons */
+  background: #000080;  /* Dark blue background */
+  position: absolute; /* Position the controls absolutely within the title bar */
+  right: 5px; /* Position them 5px from the right edge */
+  top: 50%;
+  transform: translateY(-50%); /* Center vertically */
+}
+
+.window-shellbreaker .title-bar-controls button {
+  border: none;
+  /* background: #000080;  Dark blue background */
+  height: 20px;
+  width: 20px;
+  color: #000000;
+  cursor: pointer;
+  padding: 0;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 16px;
+  text-align: center;
+  line-height: 20px; /* Center text vertically */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.window-shellbreaker .title-bar-controls button i {
+  font-size: 16px; /* Adjust icon size */
+}
+
+.window-shellbreaker .title-bar-controls button[aria-label="Minimize"]::before {
+  content: none; /* Remove previous content */
+}
+
+.window-shellbreaker .title-bar-controls button[aria-label="Maximize"]::before {
+  content: none; /* Remove previous content */
+}
+
+.window-shellbreaker .title-bar-controls button[aria-label="Close"]::before {
+  content: none; /* Remove previous content */
+}
+
 .window-titlebar {
   background-color: #000080;
   color: #ffffff;
@@ -596,3 +668,16 @@ button:hover {
     0 0 20px rgba(255, 0, 255, 0.5), /* Magenta inner glow */
     0 0 25px rgba(255, 0, 255, 0.7); /* More intense magenta inner glow */
 }
+
+#game-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+canvas {
+  max-width: 100%;
+  max-height: 100%;
+}
+
