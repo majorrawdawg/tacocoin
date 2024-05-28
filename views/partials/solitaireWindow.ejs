@@ -1,11 +1,11 @@
 <link href="/css/solitaire.css" rel="stylesheet" type="text/css">
-<div class="window" id="solitaire-window" style="display: none; position: fixed; z-index: 10;">
+<div class="window-solitaire" id="solitaire-window" style="display: none; position: fixed; z-index: 10;">
     <div class="title-bar">
-      <div class="title-bar-text">Solitaire</div>
+      <div class="title-bar-text">SOLITAIRE</div>
       <div class="title-bar-controls">
-        <button aria-label="Minimize" onclick="minimizeWindow('solitaire-window');"></button>
-        <button aria-label="Maximize" onclick="maximizeWindow('solitaire-window');"></button>
-        <button aria-label="Close" onclick="closeWindow('solitaire-window');"></button>
+        <button aria-label="Minimize" onclick="minimizeWindow('solitaire-window');"><i class="fas fa-minus"></i></button>
+        <button aria-label="Maximize" onclick="maximizeWindow('solitaire-window');"><i class="fas fa-expand"></i></button>
+        <button style="font-weight: bold;" aria-label="Close" onclick="closeWindow('solitaire-window');">X</button>
       </div>
     </div>
     <div class="window-body">
