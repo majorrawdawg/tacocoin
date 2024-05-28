@@ -2,18 +2,24 @@ function initializeGame() {
   console.log('Initializing Shell Breaker game...');
   const config = {
     type: Phaser.AUTO,
-    width: '100%',
-    height: '100%',
+    width: 720,
+    height: 600,
     parent: 'game-container',
     scene: {
       preload: preload,
       create: create,
       update: update
+    },
+    scale: {
+      mode: Phaser.Scale.FIT,
+      autoCenter: Phaser.Scale.CENTER_BOTH,
     }
   };
+
   const game = new Phaser.Game(config);
 
   function preload() {
+    console.log('Preloading assets...');
     this.load.image('taco_fresh', '/assets/sb/images/default_tacos/taco_01.png');
     this.load.image('taco_slightly_stale', '/assets/sb/images/default_tacos/taco_02.png');
     this.load.image('taco_stale', '/assets/sb/images/default_tacos/taco_03.png');
@@ -21,10 +27,11 @@ function initializeGame() {
   }
 
   function create() {
+    console.log('Creating game scene...');
     this.tacoPhases = ['fresh', 'slightly_stale', 'stale', 'dead'];
     this.taco = {
       phase: 0,
-      sprite: this.add.sprite(0, 0, 'taco_fresh')
+      sprite: this.add.sprite(this.cameras.main.width / 2, this.cameras.main.height / 2, 'taco_fresh')
     };
     this.taco.sprite.setOrigin(0.5);
     this.taco.sprite.setInteractive();
@@ -39,8 +46,6 @@ function initializeGame() {
         this.clickCount = 0;
       }
     }, this);
-
-    this.resizeGame();
   }
 
   function updateTacoPhase() {
@@ -59,23 +64,6 @@ function initializeGame() {
   function update() {
     // Update game logic, if needed
   }
-
-  function resizeGame() {
-    const width = this.sys.game.config.width;
-    const height = this.sys.game.config.height;
-    const scale = Math.min(width / 400, height / 300);
-
-    this.taco.sprite.setPosition(width / 2, height / 2);
-    this.taco.sprite.setScale(scale);
-  }
-
-  window.addEventListener('resize', function() {
-    game.events.emit('resize');
-  });
-
-  this.events.on('resize', function() {
-    resizeGame();
-  }, this);
 }
 
 document.addEventListener("DOMContentLoaded", function() {
