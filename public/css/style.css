@@ -207,7 +207,8 @@ body {
 }
 
 .window-shellbreaker {
-  background-color: #333333;
+  background-color: #000000;
+  /* background-color: #333333; */
   border: 2px outset #c0c0c0;
   padding: 0px;
   position: absolute;
