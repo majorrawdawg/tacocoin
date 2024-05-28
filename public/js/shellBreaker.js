@@ -27,6 +27,8 @@ function initializeGame() {
     this.load.image('crack', '/assets/sb/images/crack.png'); // Load crack image
     this.load.audio('tapSound', '/assets/sb/sounds/tap.mp3'); // Load tap sound
     this.load.audio('crackSound', '/assets/sb/sounds/crack.mp3'); // Load crack sound
+    // this.load.audio('heartbeat', '/assets/sb/sounds/heartbeat.mp3'); // Load heartbeat sound
+    // this.load.audio('flatline', '/assets/sb/sounds/flatline.mp3'); // Load flatline sound
   }
 
   function create() {
@@ -42,6 +44,10 @@ function initializeGame() {
 
     this.tapSound = this.sound.add('tapSound');
     this.crackSound = this.sound.add('crackSound');
+    // this.heartbeatSound = this.sound.add('heartbeat');
+    // this.flatlineSound = this.sound.add('flatline');
+
+    // this.heartbeatSound.play({ loop: true });
 
     this.clickCount = 0;
     this.clicksToNextPhase = 10;
@@ -68,6 +74,8 @@ function initializeGame() {
     this.taco.sprite.setTexture('taco_' + this.tacoPhases[this.taco.phase]);
     console.log(`Taco phase updated to: ${this.tacoPhases[this.taco.phase]}`);
 
+    // updateHeartbeat.call(this);
+
     if (this.taco.phase === this.tacoPhases.length - 1) {
       endGame.call(this);
     }
@@ -75,7 +83,21 @@ function initializeGame() {
 
   function endGame() {
     console.log('Game Over');
+    // this.heartbeatSound.stop();
+    // this.flatlineSound.play();
   }
+
+  // function updateHeartbeat() {
+  //   if (this.taco.phase === 0) {
+  //     this.heartbeatSound.setRate(1.0); // Normal heartbeat
+  //   } else if (this.taco.phase === 1) {
+  //     this.heartbeatSound.setRate(1.5); // Faster heartbeat
+  //   } else if (this.taco.phase === 2) {
+  //     this.heartbeatSound.setRate(2.0); // Even faster heartbeat
+  //   } else if (this.taco.phase === 3) {
+  //     this.heartbeatSound.setRate(0.5); // Slower heartbeat
+  //   }
+  // }
 
   function update() {
     // Update game logic, if needed
