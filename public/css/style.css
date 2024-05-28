@@ -289,7 +289,8 @@ body {
   bottom: 120px;
   display: flex;
   flex-direction: column;
-  height: auto;
+  min-height: 400px;
+  max-height: 100%;
   display: none;
   overflow: hidden;
   z-index: 10; /* Ensure windows can be layered above others */
@@ -348,6 +349,81 @@ body {
 }
 
 .window-solitaire .title-bar-controls button[aria-label="Close"]::before {
+  content: none; /* Remove previous content */
+}
+
+.window-dao {
+  background-color: #333333;
+  border: 2px outset #c0c0c0;
+  padding: 0px 10px 10px;
+  position: absolute;
+  top: 75px;
+  left: 120px;
+  right: 120px;
+  bottom: 120px;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  display: none;
+  overflow: hidden;
+  z-index: 10; /* Ensure windows can be layered above others */
+}
+
+.window-dao .title-bar {
+  background-color: #323639;
+  /* background-color: #000080;  */
+  color: #ffffff;
+  padding: 5px;
+  margin-left: -10px;
+  margin-right: -10px;
+  display: flex;
+  border: 2px outset #c0c0c0;
+  background: #000080;  /* Dark blue background */
+  justify-content: space-between;
+  align-items: center; /* Ensures the controls align in the center vertically */
+  position: relative; /* Allows for absolute positioning of the controls */
+}
+
+.window-dao .title-bar-controls {
+  display: flex;
+  gap: 5px; /* Space between buttons */
+  background: #000080;  /* Dark blue background */
+  position: absolute; /* Position the controls absolutely within the title bar */
+  right: 5px; /* Position them 5px from the right edge */
+  top: 50%;
+  transform: translateY(-50%); /* Center vertically */
+}
+
+.window-dao .title-bar-controls button {
+  border: none;
+  /* background: #000080;  Dark blue background */
+  height: 20px;
+  width: 20px;
+  color: #000000;
+  cursor: pointer;
+  padding: 0;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 16px;
+  text-align: center;
+  line-height: 20px; /* Center text vertically */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.window-dao .title-bar-controls button i {
+  font-size: 16px; /* Adjust icon size */
+}
+
+.window-dao .title-bar-controls button[aria-label="Minimize"]::before {
+  content: none; /* Remove previous content */
+}
+
+.window-dao .title-bar-controls button[aria-label="Maximize"]::before {
+  content: none; /* Remove previous content */
+}
+
+.window-dao .title-bar-controls button[aria-label="Close"]::before {
   content: none; /* Remove previous content */
 }
 
