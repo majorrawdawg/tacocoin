@@ -24,6 +24,9 @@ function initializeGame() {
     this.load.image('taco_slightly_stale', '/assets/sb/images/default_tacos/taco_02.png');
     this.load.image('taco_stale', '/assets/sb/images/default_tacos/taco_03.png');
     this.load.image('taco_dead', '/assets/sb/images/default_tacos/taco_04.png');
+    this.load.image('crack', '/assets/sb/images/crack.png'); // Load crack image
+    this.load.audio('tapSound', '/assets/sb/sounds/tap.mp3'); // Load tap sound
+    this.load.audio('crackSound', '/assets/sb/sounds/crack.mp3'); // Load crack sound
   }
 
   function create() {
@@ -37,16 +40,24 @@ function initializeGame() {
     this.taco.sprite.setOrigin(0.5);
     this.taco.sprite.setInteractive();
 
+    this.tapSound = this.sound.add('tapSound');
+    this.crackSound = this.sound.add('crackSound');
+
     this.clickCount = 0;
     this.clicksToNextPhase = 10;
 
-    this.taco.sprite.on('pointerdown', function() {
+    this.taco.sprite.on('pointerdown', () => {
+      console.log('Taco clicked');
+      this.tapSound.play();
       this.clickCount++;
+      console.log(`Click count: ${this.clickCount}`);
       if (this.clickCount >= this.clicksToNextPhase) {
-        this.updateTacoPhase();
+        updateTacoPhase.call(this);
         this.clickCount = 0;
       }
-    }, this);
+      animateTaco.call(this);
+      addCrack.call(this);
+    });
 
     // Ensure proper positioning
     this.scale.on('resize', resizeGame, this);
@@ -55,9 +66,10 @@ function initializeGame() {
   function updateTacoPhase() {
     this.taco.phase = Math.min(this.taco.phase + 1, this.tacoPhases.length - 1);
     this.taco.sprite.setTexture('taco_' + this.tacoPhases[this.taco.phase]);
+    console.log(`Taco phase updated to: ${this.tacoPhases[this.taco.phase]}`);
 
     if (this.taco.phase === this.tacoPhases.length - 1) {
-      this.endGame();
+      endGame.call(this);
     }
   }
 
@@ -80,7 +92,45 @@ function initializeGame() {
     this.taco.sprite.setScale(scale);
   }
 
-  window.addEventListener('resize', function() {
+  function animateTaco() {
+    console.log('Animating taco');
+    this.tweens.add({
+      targets: this.taco.sprite,
+      angle: { from: -10, to: 10 },
+      duration: 100,
+      ease: 'Sine.easeInOut',
+      yoyo: true,
+      repeat: 5,
+      onComplete: () => {
+        this.taco.sprite.angle = 0; // Reset angle after wobble
+        console.log('Taco animation complete');
+      }
+    });
+  }
+
+  function addCrack() {
+    console.log('Adding crack');
+    const crack = this.add.image(
+      Phaser.Math.Between(0, this.scale.width),
+      Phaser.Math.Between(0, this.scale.height),
+      'crack'
+    );
+    crack.setAlpha(0);
+    this.tweens.add({
+      targets: crack,
+      alpha: 1,
+      duration: 100,
+      ease: 'Power1',
+      yoyo: true,
+      onComplete: () => {
+        crack.destroy(); // Remove crack after animation
+        console.log('Crack animation complete');
+      }
+    });
+    this.crackSound.play();
+  }
+
+  window.addEventListener('resize', () => {
     const width = window.innerWidth;
     const height = window.innerHeight;
     game.scale.resize(width, height);
@@ -88,10 +138,10 @@ function initializeGame() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", () => {
   const shellBreakerButton = document.querySelector('.desktop-icon[data-target="shell-breaker-window"]');
   if (shellBreakerButton) {
-    shellBreakerButton.addEventListener('click', function() {
+    shellBreakerButton.addEventListener('click', () => {
       const window = document.getElementById('shell-breaker-window');
       window.style.display = 'block';
       const gameContainer = document.getElementById('game-container');
