@@ -1,3 +1,5 @@
+let game;
+
 function initializeGame() {
   console.log('Initializing Shell Breaker game...');
   const config = {
@@ -16,7 +18,9 @@ function initializeGame() {
     }
   };
 
-  const game = new Phaser.Game(config);
+  if (!game) {
+    game = new Phaser.Game(config);
+  }
 
   function preload() {
     console.log('Preloading assets...');
@@ -62,7 +66,9 @@ function initializeGame() {
         this.clickCount = 0;
       }
       animateTaco.call(this);
-      addCrack.call(this);
+      if (this.taco.phase !== this.tacoPhases.length - 1) {
+        addCrack.call(this);
+      }
     });
 
     // Ensure proper positioning
@@ -116,18 +122,36 @@ function initializeGame() {
 
   function animateTaco() {
     console.log('Animating taco');
-    this.tweens.add({
-      targets: this.taco.sprite,
-      angle: { from: -10, to: 10 },
-      duration: 100,
-      ease: 'Sine.easeInOut',
-      yoyo: true,
-      repeat: 5,
-      onComplete: () => {
-        this.taco.sprite.angle = 0; // Reset angle after wobble
-        console.log('Taco animation complete');
-      }
-    });
+    const phase = this.taco.phase;
+    if (phase === this.tacoPhases.length - 1) {
+      // Barely wobble for phase 4
+      this.tweens.add({
+        targets: this.taco.sprite,
+        x: { from: this.taco.sprite.x - 2, to: this.taco.sprite.x + 2 },
+        duration: 200,
+        ease: 'Sine.easeInOut',
+        yoyo: true,
+        repeat: 1,
+        onComplete: () => {
+          this.taco.sprite.x = this.scale.width / 2; // Reset position after wobble
+          console.log('Taco animation complete (barely wobble)');
+        }
+      });
+    } else {
+      // Normal wobble for other phases
+      this.tweens.add({
+        targets: this.taco.sprite,
+        angle: { from: -10, to: 10 },
+        duration: 100,
+        ease: 'Sine.easeInOut',
+        yoyo: true,
+        repeat: 5,
+        onComplete: () => {
+          this.taco.sprite.angle = 0; // Reset angle after wobble
+          console.log('Taco animation complete');
+        }
+      });
+    }
   }
 
   function addCrack() {
@@ -160,16 +184,32 @@ function initializeGame() {
   });
 }
 
+function resetGame() {
+  if (game && game.scene.scenes.length > 0) {
+    game.scene.scenes[0].scene.restart();
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const shellBreakerButton = document.querySelector('.desktop-icon[data-target="shell-breaker-window"]');
+  const resetButton = document.getElementById('reset-button');
   if (shellBreakerButton) {
     shellBreakerButton.addEventListener('click', () => {
       const window = document.getElementById('shell-breaker-window');
       window.style.display = 'block';
       const gameContainer = document.getElementById('game-container');
       if (gameContainer) {
-        initializeGame();
+        if (!game || game.scene.scenes.length === 0) {
+          initializeGame();
+        }
       }
+    });
+  }
+
+  if (resetButton) {
+    resetButton.addEventListener('click', () => {
+      console.log('Reset button clicked');
+      resetGame();
     });
   }
 });
