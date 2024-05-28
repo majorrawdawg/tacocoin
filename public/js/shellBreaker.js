@@ -11,8 +11,8 @@ function initializeGame() {
       update: update
     },
     scale: {
-      mode: Phaser.Scale.FIT,
-      autoCenter: Phaser.Scale.CENTER_BOTH,
+      mode: Phaser.Scale.RESIZE,
+      autoCenter: Phaser.Scale.CENTER_BOTH
     }
   };
 
@@ -29,9 +29,10 @@ function initializeGame() {
   function create() {
     console.log('Creating game scene...');
     this.tacoPhases = ['fresh', 'slightly_stale', 'stale', 'dead'];
+    const startingY = this.scale.height / 2 - 100; // Adjust this value to tweak the starting height
     this.taco = {
       phase: 0,
-      sprite: this.add.sprite(this.cameras.main.width / 2, this.cameras.main.height / 2, 'taco_fresh')
+      sprite: this.add.sprite(this.scale.width / 2, startingY, 'taco_fresh')
     };
     this.taco.sprite.setOrigin(0.5);
     this.taco.sprite.setInteractive();
@@ -46,6 +47,9 @@ function initializeGame() {
         this.clickCount = 0;
       }
     }, this);
+
+    // Ensure proper positioning
+    this.scale.on('resize', resizeGame, this);
   }
 
   function updateTacoPhase() {
@@ -64,26 +68,36 @@ function initializeGame() {
   function update() {
     // Update game logic, if needed
   }
+
+  function resizeGame(gameSize) {
+    const width = gameSize.width || this.scale.width;
+    const height = gameSize.height || this.scale.height;
+    this.cameras.resize(width, height);
+
+    // Adjust the sprite position and scale
+    const scale = Math.min(width / 720, height / 600);
+    this.taco.sprite.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2);
+    this.taco.sprite.setScale(scale);
+  }
+
+  window.addEventListener('resize', function() {
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    game.scale.resize(width, height);
+    game.scene.scenes[0].events.emit('resize', { width: width, height: height });
+  });
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-  console.log('DOM fully loaded and parsed.');
   const shellBreakerButton = document.querySelector('.desktop-icon[data-target="shell-breaker-window"]');
   if (shellBreakerButton) {
-    console.log('Shell Breaker button found.');
     shellBreakerButton.addEventListener('click', function() {
-      console.log('Shell Breaker icon clicked.');
       const window = document.getElementById('shell-breaker-window');
       window.style.display = 'block';
       const gameContainer = document.getElementById('game-container');
       if (gameContainer) {
-        console.log('Game container found. Initializing game...');
         initializeGame();
-      } else {
-        console.error('Game container not found!');
       }
     });
-  } else {
-    console.error('Shell Breaker button not found!');
   }
 });
