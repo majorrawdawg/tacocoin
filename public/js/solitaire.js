@@ -668,6 +668,9 @@ function initSolitaire() {
         number: j,
         facingUp: false,
       });
+      // Log the background image path for the card
+      console.log('Path to spritesheet:', el.style.backgroundImage);
+
     }
   }
 
