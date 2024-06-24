@@ -1038,6 +1038,7 @@ canvas {
   .start-button {
     padding: 8px 12px;
     font-size: 64px;
+    border: 4px outset #ffffff;
     height: 144px;  /* Increase height for touch interaction */
   }
 
@@ -1046,14 +1047,23 @@ canvas {
     height: 140px;
   }
 
+  .start-button:active {
+    border: 4px inset #404747; /* Create a depressed effect */
+    background-color: #404747; /* Darken the background */
+    color: #ffffff;
+  }
+
   .start-menu {
-    width: 300px;
+    border: 2px outset #000000;
+    padding: 20px;
+    box-shadow: 0 0 30px #00ffff, 0 0 60px #ff00ff;
+    width: 550px; /* Set a fixed width for the start menu */
     bottom: 70px;  /* Adjusted to ensure visibility above larger taskbar */
   }
 
   .start-menu ul li a {
-    padding: 8px;
-    font-size: 36px;
+    padding: 12px;
+    font-size: 44px;
   }
 
   .time-display {
